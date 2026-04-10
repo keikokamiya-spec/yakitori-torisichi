@@ -238,7 +238,13 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      /* 夜の木造外観：暗い古材＋提灯の光が滲む */
+      /* 夜の木造外観：暗いオーバーレイ＋実写真 */
+      background:
+        linear-gradient(160deg, rgba(8,5,2,0.80) 0%, rgba(13,8,3,0.60) 50%, rgba(8,5,2,0.78) 100%),
+        url('assets/hero.jpg') center center / cover no-repeat;
+    }
+    /* hero.jpg が未配置の場合のフォールバック */
+    .hero-bg.no-photo {
       background:
         radial-gradient(ellipse 45% 55% at 68% 50%, rgba(191,79,6,0.22) 0%, rgba(180,90,10,0.08) 45%, transparent 70%),
         radial-gradient(ellipse 30% 30% at 20% 75%, rgba(212,144,32,0.10) 0%, transparent 60%),
@@ -1425,62 +1431,29 @@
         <div class="gallery-track-wrap reveal" style="transition-delay:0.1s">
           <div class="gallery-track" id="galleryTrack" aria-label="ギャラリー写真">
 
-            <!-- 画像プレースホルダー。実際の画像ファイルを assets/ フォルダに配置後、
-                 <img src="assets/gallery-01.jpg" alt="..." loading="lazy"> に差し替えてください。 -->
-            <div class="gallery-slide" data-filter="food">
-              <div class="gallery-img-placeholder">
-                <span class="ph-icon" aria-hidden="true">🍗</span>
-                <span class="ph-label">串盛り合わせ</span>
-              </div>
-              <span class="slide-tag">料理</span>
-            </div>
-
-            <div class="gallery-slide" data-filter="food">
-              <div class="gallery-img-placeholder">
-                <span class="ph-icon" aria-hidden="true">🔥</span>
-                <span class="ph-label">炭火で焼く串</span>
-              </div>
-              <span class="slide-tag">料理</span>
-            </div>
-
-            <div class="gallery-slide" data-filter="interior">
-              <div class="gallery-img-placeholder">
-                <span class="ph-icon" aria-hidden="true">🏮</span>
-                <span class="ph-label">カウンター席</span>
-              </div>
-              <span class="slide-tag">店内</span>
+            <div class="gallery-slide" data-filter="atmosphere">
+              <img src="assets/gallery-01.jpg" alt="鳥七の外観・提灯と看板" loading="lazy" />
+              <span class="slide-tag">雰囲気</span>
             </div>
 
             <div class="gallery-slide" data-filter="atmosphere">
-              <div class="gallery-img-placeholder">
-                <span class="ph-icon" aria-hidden="true">🍶</span>
-                <span class="ph-label">串と地酒の夜</span>
-              </div>
+              <img src="assets/gallery-02.jpg" alt="鳥七の夜の外観" loading="lazy" />
               <span class="slide-tag">雰囲気</span>
             </div>
 
             <div class="gallery-slide" data-filter="interior">
-              <div class="gallery-img-placeholder">
-                <span class="ph-icon" aria-hidden="true">🪑</span>
-                <span class="ph-label">テーブル席</span>
-              </div>
+              <img src="assets/gallery-03.jpg" alt="鳥七の店内・カウンター席" loading="lazy" />
               <span class="slide-tag">店内</span>
             </div>
 
-            <div class="gallery-slide" data-filter="food">
-              <div class="gallery-img-placeholder">
-                <span class="ph-icon" aria-hidden="true">🥩</span>
-                <span class="ph-label">牛カルビ串</span>
-              </div>
-              <span class="slide-tag">料理</span>
+            <div class="gallery-slide" data-filter="interior">
+              <img src="assets/gallery-04.jpg" alt="鳥七の店内・テーブル席" loading="lazy" />
+              <span class="slide-tag">店内</span>
             </div>
 
-            <div class="gallery-slide" data-filter="atmosphere">
-              <div class="gallery-img-placeholder">
-                <span class="ph-icon" aria-hidden="true">🌃</span>
-                <span class="ph-label">夜の外観</span>
-              </div>
-              <span class="slide-tag">雰囲気</span>
+            <div class="gallery-slide" data-filter="interior">
+              <img src="assets/gallery-05.jpg" alt="鳥七の座敷席" loading="lazy" />
+              <span class="slide-tag">店内</span>
             </div>
 
           </div>
