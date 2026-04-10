@@ -1,0 +1,1873 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>居酒屋 焼き鳥鳥七｜相模原・30種の串と旨い酒</title>
+  <meta name="description" content="相模原市中央区・陽光台の焼き鳥居酒屋「鳥七」。30種の串と厳選地酒・ホッピー。創業15年、熟練の焼き加減で一本一本丁寧に仕上げます。ホットペッパーよりWeb予約受付中。" />
+  <meta name="keywords" content="焼き鳥,居酒屋,相模原,鳥七,串焼き,地酒,ホッピー,陽光台" />
+  <meta property="og:title" content="居酒屋 焼き鳥鳥七｜相模原・30種の串と旨い酒" />
+  <meta property="og:description" content="30種の串と厳選地酒。創業15年の熟練の焼き加減でおもてなし。" />
+  <meta property="og:type" content="restaurant" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* 古材の木目・白熱灯・提灯オレンジを軸にしたパレット */
+      --color-bg:       #0d0802;   /* 古材の深い影：板間の隙間色 */
+      --color-surface:  #1c1006;   /* 濃い木目茶：天井梁の色 */
+      --color-surface2: #281608;   /* やや明るい木目：テーブル面 */
+      --color-accent:   #bf4f06;   /* 提灯オレンジ：看板の赤橙 */
+      --color-accent-h: #d96010;   /* ホバー：より明るい炎色 */
+      --color-amber:    #d49020;   /* 白熱灯アンバー：電球の光 */
+      --color-gold:     #e8b870;   /* 暖かな琥珀：すだれ越しの灯り */
+      --color-gold-dim: #b88840;   /* 落ち着いた琥珀：木目のハイライト */
+      --color-text:     #f5ead8;   /* 暖簾の白：クリーム白 */
+      --color-muted:    #b09268;   /* 古壁の色：テキストサブカラー */
+      --color-border:   rgba(216,168,96,0.15); /* 木目のスリット感 */
+      --font-serif:     'Noto Serif JP', serif;
+      --font-sans:      'Noto Sans JP', sans-serif;
+      --font-num:       'Cormorant Garamond', serif;
+      --max-w:          1100px;
+      --header-h:       64px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ============================================================
+       UTILITY
+    ============================================================ */
+    .container { width: 90%; max-width: var(--max-w); margin: 0 auto; }
+
+    .section-label {
+      display: block;
+      font-family: var(--font-num);
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      color: var(--color-gold);
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.55rem, 3.5vw, 2.2rem);
+      font-weight: 700;
+      line-height: 1.4;
+      color: var(--color-gold);
+    }
+
+    .divider {
+      width: 48px;
+      height: 1px;
+      background: var(--color-gold-dim);
+      margin: 1.2rem 0 2rem;
+    }
+
+    .pc-only { display: block; }
+    .sp-only { display: none; }
+
+    /* ============================================================
+       REVEAL ANIMATION
+    ============================================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ============================================================
+       HEADER
+    ============================================================ */
+    #header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: var(--header-h);
+      display: flex;
+      align-items: center;
+      padding: 0 5%;
+      transition: background 0.4s ease, box-shadow 0.4s ease;
+    }
+    #header.scrolled {
+      background: rgba(13, 8, 2, 0.97);
+      box-shadow: 0 2px 24px rgba(0,0,0,0.65);
+      backdrop-filter: blur(10px);
+    }
+
+    .header-inner {
+      width: 100%;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header-logo {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--color-gold);
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+    .header-logo span {
+      display: block;
+      font-size: 0.6rem;
+      font-family: var(--font-sans);
+      color: var(--color-muted);
+      letter-spacing: 0.15em;
+      font-weight: 400;
+      margin-top: 1px;
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+    .header-nav a {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      color: var(--color-muted);
+      transition: color 0.25s;
+    }
+    .header-nav a:hover { color: var(--color-gold); }
+
+    .btn-reserve {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 1.2rem;
+      background: var(--color-accent);
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      border-radius: 2px;
+      transition: background 0.25s, box-shadow 0.25s;
+      white-space: nowrap;
+    }
+    .btn-reserve:hover {
+      background: var(--color-accent-h);
+      box-shadow: 0 0 18px rgba(191,79,6,0.55);
+    }
+
+    .header-menu-btn {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .header-menu-btn span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--color-gold);
+      transition: 0.3s;
+    }
+
+    /* SP drawer */
+    .sp-nav {
+      display: none;
+      position: fixed;
+      top: var(--header-h);
+      left: 0; right: 0;
+      background: rgba(13,8,2,0.98);
+      padding: 1.5rem 5%;
+      z-index: 99;
+      border-top: 1px solid var(--color-border);
+    }
+    .sp-nav.open { display: block; }
+    .sp-nav ul { list-style: none; }
+    .sp-nav li { border-bottom: 1px solid var(--color-border); }
+    .sp-nav a {
+      display: block;
+      padding: 0.9rem 0;
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      color: var(--color-text);
+    }
+    .sp-nav .btn-reserve {
+      display: block;
+      text-align: center;
+      margin-top: 1.2rem;
+      padding: 0.9rem;
+    }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    #hero {
+      position: relative;
+      height: 100svh;
+      min-height: 560px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      /* 夜の木造外観：暗い古材＋提灯の光が滲む */
+      background:
+        radial-gradient(ellipse 45% 55% at 68% 50%, rgba(191,79,6,0.22) 0%, rgba(180,90,10,0.08) 45%, transparent 70%),
+        radial-gradient(ellipse 30% 30% at 20% 75%, rgba(212,144,32,0.10) 0%, transparent 60%),
+        linear-gradient(170deg, #080502 0%, #110a03 30%, #1c1006 55%, #241408 75%, #0e0803 100%);
+    }
+
+    /* 白熱灯の光粒：埃と煙が漂う居酒屋の空気 */
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(1.5px 1.5px at 65% 45%, rgba(232,184,112,0.55) 0%, transparent 100%),
+        radial-gradient(1px 1px at 70% 30%, rgba(191,79,6,0.45) 0%, transparent 100%),
+        radial-gradient(2px 2px at 18% 65%, rgba(212,144,32,0.28) 0%, transparent 100%),
+        radial-gradient(1px 1px at 82% 70%, rgba(232,184,112,0.35) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 42% 82%, rgba(191,79,6,0.22) 0%, transparent 100%),
+        radial-gradient(1px 1px at 55% 15%, rgba(232,184,112,0.30) 0%, transparent 100%);
+    }
+
+    /* Vertical rule decoration */
+    .hero-line {
+      position: absolute;
+      top: 10%;
+      right: 18%;
+      width: 1px;
+      height: 55%;
+      background: linear-gradient(to bottom, transparent, var(--color-gold-dim), transparent);
+      opacity: 0.4;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding-top: calc(var(--header-h) + 2rem);
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-num);
+      font-size: 0.72rem;
+      letter-spacing: 0.4em;
+      color: var(--color-gold);
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+      opacity: 0.85;
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: 0.04em;
+      color: var(--color-text);
+      margin-bottom: 1.6rem;
+    }
+    .hero-title .accent { color: var(--color-gold); }
+
+    .hero-sub {
+      font-size: clamp(0.85rem, 2vw, 1rem);
+      color: var(--color-muted);
+      letter-spacing: 0.1em;
+      line-height: 1.9;
+      max-width: 420px;
+      margin-bottom: 2.4rem;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      background: var(--color-accent);
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      border-radius: 2px;
+      transition: background 0.25s, box-shadow 0.25s, transform 0.2s;
+    }
+    .btn-primary:hover {
+      background: var(--color-accent-h);
+      box-shadow: 0 0 28px rgba(191,79,6,0.55);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.6rem;
+      border: 1px solid var(--color-gold-dim);
+      color: var(--color-gold);
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      border-radius: 2px;
+      transition: background 0.25s, border-color 0.25s;
+    }
+    .btn-ghost:hover {
+      background: rgba(216,168,96,0.08);
+      border-color: var(--color-gold);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      color: var(--color-muted);
+      text-transform: uppercase;
+    }
+    .hero-scroll::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--color-gold-dim), transparent);
+      animation: scrollLine 1.8s ease-in-out infinite;
+    }
+    @keyframes scrollLine {
+      0%   { transform: scaleY(0); transform-origin: top; opacity: 1; }
+      50%  { transform: scaleY(1); transform-origin: top; opacity: 1; }
+      100% { transform: scaleY(1); transform-origin: bottom; opacity: 0; }
+    }
+
+    /* ============================================================
+       CONCEPT
+    ============================================================ */
+    #concept {
+      padding: 7rem 0;
+      background: var(--color-surface);
+      position: relative;
+      overflow: hidden;
+    }
+    #concept::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--color-gold-dim), transparent);
+    }
+
+    .concept-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .concept-text p {
+      font-size: 0.95rem;
+      color: var(--color-muted);
+      line-height: 2;
+      margin-top: 1rem;
+    }
+    .concept-text p + p { margin-top: 1rem; }
+
+    .concept-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--color-border);
+      border: 1px solid var(--color-border);
+    }
+    .stat-item {
+      background: var(--color-surface2);
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+    .stat-num {
+      font-family: var(--font-num);
+      font-size: clamp(3rem, 7vw, 4.5rem);
+      font-weight: 600;
+      color: var(--color-gold);
+      line-height: 1;
+      display: block;
+    }
+    .stat-unit {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      color: var(--color-gold);
+    }
+    .stat-label {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--color-muted);
+      letter-spacing: 0.15em;
+      margin-top: 0.5rem;
+    }
+
+    /* ============================================================
+       MENU
+    ============================================================ */
+    #menu {
+      padding: 7rem 0;
+      background: var(--color-bg);
+    }
+
+    .menu-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .menu-header .divider { margin: 1.2rem auto 2rem; }
+
+    .menu-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+    .tab-btn {
+      padding: 0.45rem 1.1rem;
+      border: 1px solid var(--color-border);
+      background: transparent;
+      color: var(--color-muted);
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      border-radius: 1px;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .tab-btn:hover,
+    .tab-btn.active {
+      background: var(--color-accent);
+      border-color: var(--color-accent);
+      color: #fff;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--color-border);
+    }
+    .menu-item {
+      background: var(--color-surface);
+      padding: 1.5rem 1.2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      transition: background 0.25s;
+    }
+    .menu-item:hover { background: var(--color-surface2); }
+    .menu-icon {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      background: rgba(191,79,6,0.12);
+      border-radius: 50%;
+      margin-top: 2px;
+    }
+    .menu-name {
+      font-family: var(--font-serif);
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--color-text);
+      display: block;
+    }
+    .menu-desc {
+      font-size: 0.72rem;
+      color: var(--color-muted);
+      margin-top: 0.2rem;
+      line-height: 1.6;
+    }
+
+    .menu-note {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      color: var(--color-muted);
+      letter-spacing: 0.08em;
+    }
+    .menu-cta {
+      text-align: center;
+      margin-top: 2.5rem;
+    }
+
+    /* ============================================================
+       DRINK
+    ============================================================ */
+    #drink {
+      padding: 7rem 0;
+      background: var(--color-surface);
+      position: relative;
+    }
+    #drink::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--color-gold-dim), transparent);
+    }
+
+    .drink-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .drink-header .divider { margin: 1.2rem auto 2rem; }
+
+    .drink-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+    .drink-card {
+      background: var(--color-surface2);
+      border: 1px solid var(--color-border);
+      border-radius: 2px;
+      padding: 1.8rem 1.2rem;
+      text-align: center;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .drink-card:hover {
+      border-color: var(--color-gold-dim);
+      transform: translateY(-3px);
+    }
+    .drink-emoji {
+      font-size: 2.2rem;
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+    .drink-card h3 {
+      font-family: var(--font-serif);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--color-gold);
+      margin-bottom: 0.5rem;
+    }
+    .drink-card p {
+      font-size: 0.75rem;
+      color: var(--color-muted);
+      line-height: 1.7;
+    }
+
+    /* ============================================================
+       GALLERY
+    ============================================================ */
+    #gallery {
+      padding: 7rem 0;
+      background: var(--color-bg);
+    }
+
+    .gallery-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .gallery-header .divider { margin: 1.2rem auto 1.5rem; }
+
+    .gallery-filter {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .gallery-track-wrap {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .gallery-track {
+      display: flex;
+      gap: 1rem;
+      transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: transform;
+    }
+
+    .gallery-slide {
+      flex-shrink: 0;
+      width: calc(33.333% - 0.67rem);
+      border-radius: 2px;
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 4/3;
+    }
+
+    .gallery-img-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.5rem;
+      background: var(--color-surface);
+      border: 1px dashed var(--color-border);
+      transition: background 0.3s;
+    }
+    .gallery-img-placeholder:hover { background: var(--color-surface2); }
+    .gallery-img-placeholder .ph-icon { font-size: 2rem; opacity: 0.5; }
+    .gallery-img-placeholder .ph-label {
+      font-size: 0.72rem;
+      color: var(--color-muted);
+      letter-spacing: 0.1em;
+    }
+
+    /* Real images (once assets exist) */
+    .gallery-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    .gallery-slide:hover img { transform: scale(1.04); }
+
+    .gallery-slide .slide-tag {
+      position: absolute;
+      bottom: 0.6rem;
+      left: 0.6rem;
+      padding: 0.2rem 0.6rem;
+      background: rgba(13,8,2,0.82);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      color: var(--color-gold);
+      border-radius: 1px;
+    }
+
+    .gallery-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .gallery-btn {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--color-border);
+      background: transparent;
+      color: var(--color-gold);
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: background 0.25s, border-color 0.25s;
+    }
+    .gallery-btn:hover {
+      background: rgba(191,79,6,0.15);
+      border-color: var(--color-gold-dim);
+    }
+
+    .gallery-dots {
+      display: flex;
+      gap: 0.4rem;
+    }
+    .gallery-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-border);
+      cursor: pointer;
+      transition: background 0.25s;
+    }
+    .gallery-dot.active { background: var(--color-gold); }
+
+    /* ============================================================
+       STORE INFO
+    ============================================================ */
+    #info {
+      padding: 7rem 0;
+      background: var(--color-surface);
+      position: relative;
+    }
+    #info::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--color-gold-dim), transparent);
+    }
+
+    .info-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .info-header .divider { margin: 1.2rem auto 2rem; }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .info-card {
+      background: var(--color-surface2);
+      border: 1px solid var(--color-border);
+      border-radius: 2px;
+      padding: 2rem;
+    }
+    .info-card h3 {
+      font-family: var(--font-serif);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--color-gold);
+      letter-spacing: 0.15em;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .hours-table { width: 100%; }
+    .hours-table tr { border-bottom: 1px solid rgba(216,168,96,0.07); }
+    .hours-table td {
+      padding: 0.5rem 0;
+      font-size: 0.85rem;
+      color: var(--color-muted);
+      vertical-align: middle;
+    }
+    .hours-table td:first-child {
+      width: 5rem;
+      color: var(--color-text);
+    }
+    .hours-table .closed { color: #c0392b; }
+    .hours-table .open-time { color: var(--color-gold); font-weight: 500; }
+
+    .access-list {
+      list-style: none;
+    }
+    .access-list li {
+      display: flex;
+      gap: 0.8rem;
+      align-items: flex-start;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(216,168,96,0.07);
+      font-size: 0.85rem;
+      color: var(--color-muted);
+    }
+    .access-list li:last-child { border-bottom: none; }
+    .access-list .access-icon {
+      flex-shrink: 0;
+      color: var(--color-gold);
+      margin-top: 1px;
+    }
+
+    .access-highlight {
+      background: rgba(191,79,6,0.09);
+      border: 1px solid rgba(191,79,6,0.28);
+      border-radius: 2px;
+      padding: 0.8rem 1rem;
+      margin-bottom: 1rem;
+      font-size: 0.82rem;
+      color: var(--color-gold);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .map-wrap {
+      grid-column: 1 / -1;
+      border: 1px solid var(--color-border);
+      border-radius: 2px;
+      overflow: hidden;
+      height: 280px;
+      background: var(--color-surface2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .map-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      filter: grayscale(0.3) invert(0.9) hue-rotate(160deg);
+    }
+
+    .info-cta {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 2rem;
+      background: var(--color-surface2);
+      border: 1px solid var(--color-border);
+      border-radius: 2px;
+    }
+    .info-cta p {
+      font-size: 0.85rem;
+      color: var(--color-muted);
+      margin-bottom: 1.2rem;
+    }
+
+    /* ============================================================
+       INSTAGRAM SECTION
+    ============================================================ */
+    #instagram {
+      padding: 5rem 0;
+      background: var(--color-bg);
+      text-align: center;
+    }
+    .insta-header { margin-bottom: 2rem; }
+    .insta-header .divider { margin: 1.2rem auto 2rem; }
+    .insta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.8rem 1.8rem;
+      border: 1px solid var(--color-border);
+      border-radius: 2px;
+      font-size: 0.85rem;
+      color: var(--color-text);
+      letter-spacing: 0.1em;
+      transition: background 0.25s, border-color 0.25s;
+    }
+    .insta-link:hover {
+      background: rgba(216,168,96,0.07);
+      border-color: var(--color-gold-dim);
+    }
+    .insta-icon {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    #footer {
+      background: #080501;
+      padding: 3rem 0 2rem;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-logo {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--color-gold);
+      margin-bottom: 0.6rem;
+    }
+    .footer-logo span {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      color: var(--color-muted);
+      letter-spacing: 0.2em;
+      font-weight: 400;
+      margin-top: 2px;
+    }
+    .footer-brand p {
+      font-size: 0.78rem;
+      color: var(--color-muted);
+      line-height: 1.8;
+      margin-top: 0.8rem;
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-serif);
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      color: var(--color-gold-dim);
+      margin-bottom: 1rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li {
+      font-size: 0.78rem;
+      color: var(--color-muted);
+      padding: 0.3rem 0;
+      line-height: 1.6;
+    }
+    .footer-col a {
+      font-size: 0.78rem;
+      color: var(--color-muted);
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--color-gold); }
+
+    .footer-reserve {
+      display: block;
+      margin-top: 0.8rem;
+      padding: 0.7rem 1rem;
+      background: var(--color-accent);
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-align: center;
+      border-radius: 2px;
+      transition: background 0.25s;
+    }
+    .footer-reserve:hover { background: var(--color-accent-h); }
+
+    .footer-bottom {
+      border-top: 1px solid var(--color-border);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-bottom small {
+      font-size: 0.7rem;
+      color: var(--color-muted);
+      letter-spacing: 0.06em;
+    }
+    .footer-nav-links {
+      display: flex;
+      gap: 1.2rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+    .footer-nav-links a {
+      font-size: 0.7rem;
+      color: var(--color-muted);
+      transition: color 0.2s;
+    }
+    .footer-nav-links a:hover { color: var(--color-gold); }
+
+    /* Floating reserve button (mobile) */
+    .float-reserve {
+      display: none;
+      position: fixed;
+      bottom: 1.2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 90;
+      padding: 0.9rem 2.5rem;
+      background: var(--color-accent);
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      border-radius: 40px;
+      box-shadow: 0 4px 24px rgba(191,79,6,0.55);
+      white-space: nowrap;
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 900px) {
+      .concept-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .drink-grid { grid-template-columns: repeat(2, 1fr); }
+      .menu-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-slide { width: calc(50% - 0.5rem); }
+      .info-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .pc-only { display: none; }
+      .sp-only { display: block; }
+
+      :root { --header-h: 56px; }
+
+      .header-nav { display: none; }
+      .header-nav.desktop { display: none; }
+      .header-menu-btn { display: flex; }
+
+      .hero-title { line-height: 1.35; }
+
+      .menu-grid { grid-template-columns: 1fr; }
+      .drink-grid { grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+
+      .gallery-slide { width: calc(85% - 0.5rem); }
+
+      .info-grid { grid-template-columns: 1fr; }
+
+      .footer-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+
+      .float-reserve { display: block; }
+      #footer { padding-bottom: 5.5rem; }
+
+      .concept-stats { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== HEADER ===================== -->
+  <header id="header">
+    <div class="header-inner">
+      <a href="#hero" class="header-logo" aria-label="鳥七トップへ">
+        焼き鳥 鳥七
+        <span>YAKITORI TORISHICHI</span>
+      </a>
+
+      <nav aria-label="メインナビゲーション">
+        <ul class="header-nav pc-only" style="display:flex;">
+          <li><a href="#concept">こだわり</a></li>
+          <li><a href="#menu">メニュー</a></li>
+          <li><a href="#drink">ドリンク</a></li>
+          <li><a href="#gallery">店内</a></li>
+          <li><a href="#info">アクセス</a></li>
+          <li>
+            <a href="https://www.hotpepper.jp/strJ001003883/" target="_blank" rel="noopener" class="btn-reserve">
+              Web予約
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <button class="header-menu-btn sp-only" id="menuBtn" aria-label="メニューを開く" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- SP ドロワーナビ -->
+  <nav class="sp-nav" id="spNav" aria-label="スマートフォン用ナビゲーション">
+    <ul>
+      <li><a href="#concept" class="sp-nav-link">こだわり</a></li>
+      <li><a href="#menu" class="sp-nav-link">メニュー</a></li>
+      <li><a href="#drink" class="sp-nav-link">ドリンク</a></li>
+      <li><a href="#gallery" class="sp-nav-link">店内</a></li>
+      <li><a href="#info" class="sp-nav-link">アクセス</a></li>
+    </ul>
+    <a href="https://www.hotpepper.jp/strJ001003883/" target="_blank" rel="noopener" class="btn-reserve">
+      席を予約する
+    </a>
+  </nav>
+
+  <main>
+
+    <!-- ===================== HERO ===================== -->
+    <section id="hero" aria-label="ヒーローセクション">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-line" aria-hidden="true"></div>
+
+      <div class="container hero-content">
+        <p class="hero-eyebrow reveal">Yakitori Torishichi — Sagamihara</p>
+
+        <h1 class="hero-title reveal" style="transition-delay:0.15s">
+          <!-- PC用 -->
+          <span class="pc-only">
+            一本入魂。<br />
+            相模原の夜を、<br />
+            <span class="accent">串と酒</span>で満たす。
+          </span>
+          <!-- SP用 -->
+          <span class="sp-only">
+            一本入魂。<br /><span class="accent">串と酒</span>で、<br />夜を満たす。
+          </span>
+        </h1>
+
+        <p class="hero-sub reveal" style="transition-delay:0.3s">
+          30種の串と、揃いに揃った旨い酒。<br />
+          地酒からホッピーまで、相模原の喉を<br class="pc-only" />潤し続けて15年が経ちました。
+        </p>
+
+        <div class="hero-cta-group reveal" style="transition-delay:0.45s">
+          <a href="https://www.hotpepper.jp/strJ001003883/" target="_blank" rel="noopener" class="btn-primary">
+            席を予約する
+          </a>
+          <a href="#concept" class="btn-ghost">
+            鳥七のこだわり
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-scroll" aria-hidden="true">scroll</div>
+    </section>
+
+    <!-- ===================== CONCEPT ===================== -->
+    <section id="concept" aria-labelledby="concept-title">
+      <div class="container">
+        <div class="concept-inner">
+          <div class="concept-text reveal">
+            <span class="section-label">Our Commitment</span>
+            <h2 class="section-title" id="concept-title">
+              熟練の焼き加減が、<br />
+              一本の串に宿る。
+            </h2>
+            <div class="divider"></div>
+            <p>
+              相模原市中央区・陽光台の静かな通りに、鳥七は店を構えています。
+              駅から離れた立地は、喧騒を離れてゆっくりしたい方へ向けた、意思ある「隠れ家」です。
+            </p>
+            <p>
+              開業から15年。変わらぬ炭火と向き合いながら、串一本一本に向き合ってきました。
+              30種のラインナップは、定番の鶏ものから季節の変わり種まで。
+              どれを頼んでも、熟練の焼き加減が答えです。
+            </p>
+            <p>
+              地酒、焼酎、ホッピー——酒の揃いも自慢です。
+              串と酒の相性を、どうか心ゆくまでお楽しみください。
+            </p>
+          </div>
+
+          <div class="concept-stats reveal" style="transition-delay:0.2s" aria-label="鳥七の数字">
+            <div class="stat-item">
+              <span class="stat-num">15</span>
+              <span class="stat-unit">年</span>
+              <span class="stat-label">創業からの歴史</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num">30</span>
+              <span class="stat-unit">種</span>
+              <span class="stat-label">串メニューの種類</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num">17</span>
+              <span class="stat-unit">時〜</span>
+              <span class="stat-label">月〜水・金〜日営業</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num">∞</span>
+              <span class="stat-unit"></span>
+              <span class="stat-label">酒の種類（地酒〜ホッピー）</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== MENU ===================== -->
+    <section id="menu" aria-labelledby="menu-title">
+      <div class="container">
+        <div class="menu-header">
+          <span class="section-label reveal">Skewer Menu</span>
+          <h2 class="section-title reveal" id="menu-title" style="transition-delay:0.1s">
+            30種の串、一本入魂。
+          </h2>
+          <div class="divider"></div>
+          <p class="reveal" style="font-size:0.88rem;color:var(--color-muted);max-width:480px;margin:0 auto;transition-delay:0.2s">
+            定番から変わり種まで。お任せで頼めば、バランス良くお出しします。
+          </p>
+        </div>
+
+        <div class="menu-tabs reveal" role="tablist" aria-label="メニューカテゴリ">
+          <button class="tab-btn active" data-cat="all" role="tab" aria-selected="true">すべて</button>
+          <button class="tab-btn" data-cat="tori" role="tab" aria-selected="false">鶏もの</button>
+          <button class="tab-btn" data-cat="buta" role="tab" aria-selected="false">豚・牛もの</button>
+          <button class="tab-btn" data-cat="yasai" role="tab" aria-selected="false">野菜・変わり串</button>
+          <button class="tab-btn" data-cat="omakase" role="tab" aria-selected="false">お任せ</button>
+        </div>
+
+        <div class="menu-grid reveal" id="menuGrid" style="transition-delay:0.1s">
+
+          <!-- お任せ（omakase） -->
+          <div class="menu-item" data-cat="omakase">
+            <div class="menu-icon" aria-hidden="true">🔥</div>
+            <div>
+              <span class="menu-name">お任せセット</span>
+              <span class="menu-desc">バランスよく盛り合わせ。初めての方にもおすすめ。</span>
+            </div>
+          </div>
+
+          <!-- 鶏もの（tori） -->
+          <div class="menu-item" data-cat="tori">
+            <div class="menu-icon" aria-hidden="true">🍗</div>
+            <div>
+              <span class="menu-name">もも</span>
+              <span class="menu-desc">ジューシーな鶏もも肉。塩・タレどちらでも。</span>
+            </div>
+          </div>
+          <div class="menu-item" data-cat="tori">
+            <div class="menu-icon" aria-hidden="true">🍗</div>
+            <div>
+              <span class="menu-name">むね</span>
+              <span class="menu-desc">さっぱりとした鶏むね。柚子塩がよく合います。</span>
+            </div>
+          </div>
+          <div class="menu-item" data-cat="tori">
+            <div class="menu-icon" aria-hidden="true">🍗</div>
+            <div>
+              <span class="menu-name">ねぎま</span>
+              <span class="menu-desc">鶏もも×長ねぎのコンビネーション。定番中の定番。</span>
+            </div>
+          </div>
+          <div class="menu-item" data-cat="tori">
+            <div class="menu-icon" aria-hidden="true">🍗</div>
+            <div>
+              <span class="menu-name">つくね</span>
+              <span class="menu-desc">自家製のつくね。タレと半熟卵で召し上がれ。</span>
+            </div>
+          </div>
+          <div class="menu-item" data-cat="tori">
+            <div class="menu-icon" aria-hidden="true">🍗</div>
+            <div>
+              <span class="menu-name">皮</span>
+              <span class="menu-desc">カリカリに焼いた鶏皮。塩でどうぞ。</span>
+            </div>
+          </div>
+          <div class="menu-item" data-cat="tori">
+            <div class="menu-icon" aria-hidden="true">🍗</div>
+            <div>
+              <span class="menu-name">砂肝</span>
+              <span class="menu-desc">コリコリとした食感。塩・わさびもおすすめ。</span>
+            </div>
+          </div>
+          <div class="menu-item" data-cat="tori">
+            <div class="menu-icon" aria-hidden="true">🍗</div>
+            <div>
+              <span class="menu-name">レバー</span>
+              <span class="menu-desc">新鮮なレバー。半生に焼き上げます。</span>
+            </div>
+          </div>
+          <div class="menu-item" data-cat="tori">
+            <div class="menu-icon" aria-hidden="true">🍗</div>
+            <div>
+              <span class="menu-name">ハツ</span>
+              <span class="menu-desc">心臓の旨みが凝縮。シンプルに塩で。</span>
+            </div>
+          </div>
+          <div class="menu-item" data-cat="tori">
+            <div class="menu-icon" aria-hidden="true">🍗</div>
+            <div>
+              <span class="menu-name">せせり</span>
+              <span class="menu-desc">希少な首まわりの肉。歯応えと旨みの両立。</span>
+            </div>
+          </div>
+          <div class="menu-item" data-cat="tori">
+            <div class="menu-icon" aria-hidden="true">🍗</div>
+            <div>
+              <span class="menu-name">手羽先</span>
+              <span class="menu-desc">こんがり焼いた手羽先。ビールが進む一品。</span>
+            </div>
+          </div>
+
+          <!-- 豚・牛もの（buta） -->
+          <div class="menu-item" data-cat="buta">
+            <div class="menu-icon" aria-hidden="true">🥩</div>
+            <div>
+              <span class="menu-name">豚バラ</span>
+              <span class="menu-desc">脂の甘みが絶品。タレとの相性抜群。</span>
+            </div>
+          </div>
+          <div class="menu-item" data-cat="buta">
+            <div class="menu-icon" aria-hidden="true">🥩</div>
+            <div>
+              <span class="menu-name">豚ねぎ巻き</span>
+              <span class="menu-desc">豚バラで長ねぎを巻いた人気串。</span>
+            </div>
+          </div>
+          <div class="menu-item" data-cat="buta">
+            <div class="menu-icon" aria-hidden="true">🥩</div>
+            <div>
+              <span class="menu-name">牛カルビ</span>
+              <span class="menu-desc">国産牛カルビ。旨みたっぷりのタレで。</span>
+            </div>
+          </div>
+          <div class="menu-item" data-cat="buta">
+            <div class="menu-icon" aria-hidden="true">🥩</div>
+            <div>
+              <span class="menu-name">豚もつ</span>
+              <span class="menu-desc">味噌だれで仕上げた濃厚もつ串。</span>
+            </div>
+          </div>
+
+          <!-- 野菜・変わり串（yasai） -->
+          <div class="menu-item" data-cat="yasai">
+            <div class="menu-icon" aria-hidden="true">🌿</div>
+            <div>
+              <span class="menu-name">ししとう</span>
+              <span class="menu-desc">シンプルな塩焼き。ピリッとした一本。</span>
+            </div>
+          </div>
+          <div class="menu-item" data-cat="yasai">
+            <div class="menu-icon" aria-hidden="true">🌿</div>
+            <div>
+              <span class="menu-name">えのき巻き</span>
+              <span class="menu-desc">豚バラでえのきを巻いた軽やかな一品。</span>
+            </div>
+          </div>
+          <div class="menu-item" data-cat="yasai">
+            <div class="menu-icon" aria-hidden="true">🧅</div>
+            <div>
+              <span class="menu-name">玉ねぎ</span>
+              <span class="menu-desc">甘みが引き出された焼き玉ねぎ。</span>
+            </div>
+          </div>
+          <div class="menu-item" data-cat="yasai">
+            <div class="menu-icon" aria-hidden="true">🌽</div>
+            <div>
+              <span class="menu-name">とうもろこし</span>
+              <span class="menu-desc">季節のとうもろこし。醤油バターで。</span>
+            </div>
+          </div>
+          <div class="menu-item" data-cat="yasai">
+            <div class="menu-icon" aria-hidden="true">🧀</div>
+            <div>
+              <span class="menu-name">チーズ豚巻き</span>
+              <span class="menu-desc">とろけるチーズを豚バラで包んだ一串。</span>
+            </div>
+          </div>
+          <div class="menu-item" data-cat="yasai">
+            <div class="menu-icon" aria-hidden="true">🥓</div>
+            <div>
+              <span class="menu-name">ベーコンアスパラ</span>
+              <span class="menu-desc">アスパラのシャキシャキとベーコンの旨みが合う。</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="menu-note reveal">
+          ※ 季節のメニュー・一部品切れの場合がございます。お気軽にお声がけください。
+        </p>
+        <div class="menu-cta reveal" style="transition-delay:0.1s">
+          <a href="https://www.hotpepper.jp/strJ001003883/" target="_blank" rel="noopener" class="btn-primary">
+            席を予約してから来る
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== DRINK ===================== -->
+    <section id="drink" aria-labelledby="drink-title">
+      <div class="container">
+        <div class="drink-header">
+          <span class="section-label reveal">Drink Menu</span>
+          <h2 class="section-title reveal" id="drink-title" style="transition-delay:0.1s">
+            揃いに揃った、旨い酒。
+          </h2>
+          <div class="divider"></div>
+          <p class="reveal" style="font-size:0.88rem;color:var(--color-muted);transition-delay:0.2s">
+            地酒からホッピーまで。串に合う酒を、豊富に取り揃えています。
+          </p>
+        </div>
+
+        <div class="drink-grid">
+          <div class="drink-card reveal">
+            <span class="drink-emoji" aria-hidden="true">🍶</span>
+            <h3>地酒・日本酒</h3>
+            <p>相模原・神奈川の地酒を中心に、季節の銘柄を随時入荷。串との相性を楽しんでください。</p>
+          </div>
+          <div class="drink-card reveal" style="transition-delay:0.1s">
+            <span class="drink-emoji" aria-hidden="true">🥃</span>
+            <h3>焼酎</h3>
+            <p>芋・麦・米、各種取り揃え。ロック・水割り・お湯割りでどうぞ。</p>
+          </div>
+          <div class="drink-card reveal" style="transition-delay:0.2s">
+            <span class="drink-emoji" aria-hidden="true">🍺</span>
+            <h3>ホッピー・生ビール</h3>
+            <p>鳥七の定番。ホッピーは白・黒あり。仕事帰りの一杯にぴったりです。</p>
+          </div>
+          <div class="drink-card reveal" style="transition-delay:0.3s">
+            <span class="drink-emoji" aria-hidden="true">🍹</span>
+            <h3>サワー・ハイボール</h3>
+            <p>レモン・ウメ・グレープフルーツ等のサワー類も豊富。飲みやすい一杯をどうぞ。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== GALLERY ===================== -->
+    <section id="gallery" aria-labelledby="gallery-title">
+      <div class="container">
+        <div class="gallery-header">
+          <span class="section-label reveal">Gallery</span>
+          <h2 class="section-title reveal" id="gallery-title" style="transition-delay:0.1s">
+            店内・料理の表情
+          </h2>
+          <div class="divider"></div>
+        </div>
+
+        <div class="gallery-filter reveal" role="tablist" aria-label="ギャラリーフィルター">
+          <button class="tab-btn active" data-filter="all" role="tab">すべて</button>
+          <button class="tab-btn" data-filter="food" role="tab">料理</button>
+          <button class="tab-btn" data-filter="interior" role="tab">店内</button>
+          <button class="tab-btn" data-filter="atmosphere" role="tab">雰囲気</button>
+        </div>
+
+        <div class="gallery-track-wrap reveal" style="transition-delay:0.1s">
+          <div class="gallery-track" id="galleryTrack" aria-label="ギャラリー写真">
+
+            <!-- 画像プレースホルダー。実際の画像ファイルを assets/ フォルダに配置後、
+                 <img src="assets/gallery-01.jpg" alt="..." loading="lazy"> に差し替えてください。 -->
+            <div class="gallery-slide" data-filter="food">
+              <div class="gallery-img-placeholder">
+                <span class="ph-icon" aria-hidden="true">🍗</span>
+                <span class="ph-label">串盛り合わせ</span>
+              </div>
+              <span class="slide-tag">料理</span>
+            </div>
+
+            <div class="gallery-slide" data-filter="food">
+              <div class="gallery-img-placeholder">
+                <span class="ph-icon" aria-hidden="true">🔥</span>
+                <span class="ph-label">炭火で焼く串</span>
+              </div>
+              <span class="slide-tag">料理</span>
+            </div>
+
+            <div class="gallery-slide" data-filter="interior">
+              <div class="gallery-img-placeholder">
+                <span class="ph-icon" aria-hidden="true">🏮</span>
+                <span class="ph-label">カウンター席</span>
+              </div>
+              <span class="slide-tag">店内</span>
+            </div>
+
+            <div class="gallery-slide" data-filter="atmosphere">
+              <div class="gallery-img-placeholder">
+                <span class="ph-icon" aria-hidden="true">🍶</span>
+                <span class="ph-label">串と地酒の夜</span>
+              </div>
+              <span class="slide-tag">雰囲気</span>
+            </div>
+
+            <div class="gallery-slide" data-filter="interior">
+              <div class="gallery-img-placeholder">
+                <span class="ph-icon" aria-hidden="true">🪑</span>
+                <span class="ph-label">テーブル席</span>
+              </div>
+              <span class="slide-tag">店内</span>
+            </div>
+
+            <div class="gallery-slide" data-filter="food">
+              <div class="gallery-img-placeholder">
+                <span class="ph-icon" aria-hidden="true">🥩</span>
+                <span class="ph-label">牛カルビ串</span>
+              </div>
+              <span class="slide-tag">料理</span>
+            </div>
+
+            <div class="gallery-slide" data-filter="atmosphere">
+              <div class="gallery-img-placeholder">
+                <span class="ph-icon" aria-hidden="true">🌃</span>
+                <span class="ph-label">夜の外観</span>
+              </div>
+              <span class="slide-tag">雰囲気</span>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="gallery-controls">
+          <button class="gallery-btn" id="galleryPrev" aria-label="前へ">&#8592;</button>
+          <div class="gallery-dots" id="galleryDots" aria-label="スライドインジケーター"></div>
+          <button class="gallery-btn" id="galleryNext" aria-label="次へ">&#8594;</button>
+        </div>
+
+        <p style="text-align:center;margin-top:1.5rem;font-size:0.78rem;color:var(--color-muted);">
+          最新の写真は
+          <a href="https://www.instagram.com/torishichi_yakitori10/" target="_blank" rel="noopener"
+             style="color:var(--color-gold);text-decoration:underline;text-underline-offset:3px;">
+            Instagram
+          </a>
+          をご覧ください。
+        </p>
+      </div>
+    </section>
+
+    <!-- ===================== STORE INFO ===================== -->
+    <section id="info" aria-labelledby="info-title">
+      <div class="container">
+        <div class="info-header">
+          <span class="section-label reveal">Shop Info</span>
+          <h2 class="section-title reveal" id="info-title" style="transition-delay:0.1s">
+            店舗情報・アクセス
+          </h2>
+          <div class="divider"></div>
+        </div>
+
+        <div class="info-grid">
+
+          <!-- 営業時間 -->
+          <div class="info-card reveal">
+            <h3>営業時間 / 定休日</h3>
+            <table class="hours-table" aria-label="営業時間表">
+              <tbody>
+                <tr>
+                  <td>月曜日</td>
+                  <td class="open-time">17:00 〜 深夜0:00</td>
+                </tr>
+                <tr>
+                  <td>火曜日</td>
+                  <td class="open-time">17:00 〜 深夜0:00</td>
+                </tr>
+                <tr>
+                  <td>水曜日</td>
+                  <td class="open-time">17:00 〜 深夜0:00</td>
+                </tr>
+                <tr>
+                  <td>木曜日</td>
+                  <td class="closed">定休日</td>
+                </tr>
+                <tr>
+                  <td>金曜日</td>
+                  <td class="open-time">17:00 〜 深夜0:00</td>
+                </tr>
+                <tr>
+                  <td>土曜日</td>
+                  <td class="open-time">17:00 〜 深夜0:00</td>
+                </tr>
+                <tr>
+                  <td>日曜日</td>
+                  <td class="open-time">17:00 〜 深夜0:00</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div style="margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--color-border);">
+              <p style="font-size:0.8rem;color:var(--color-muted);line-height:1.8;">
+                <strong style="color:var(--color-text);display:block;margin-bottom:0.3rem;">お電話でのご予約・お問い合わせ</strong>
+                <a href="tel:0428652754" style="font-family:var(--font-num);font-size:1.3rem;color:var(--color-gold);letter-spacing:0.05em;">
+                  042-865-2754
+                </a>
+              </p>
+            </div>
+          </div>
+
+          <!-- アクセス -->
+          <div class="info-card reveal" style="transition-delay:0.15s">
+            <h3>住所 / アクセス</h3>
+
+            <div class="access-highlight" role="note">
+              <span aria-hidden="true">🚗</span>
+              お車でのご来店が便利です（各駅から10〜15分）
+            </div>
+
+            <ul class="access-list">
+              <li>
+                <span class="access-icon" aria-hidden="true">📍</span>
+                <span>
+                  〒252-0226<br />
+                  神奈川県相模原市中央区<br />陽光台2丁目15-10
+                </span>
+              </li>
+              <li>
+                <span class="access-icon" aria-hidden="true">🚃</span>
+                <span>JR横浜線「淵野辺駅」「相模原駅」より徒歩約40分 / 車約15分</span>
+              </li>
+              <li>
+                <span class="access-icon" aria-hidden="true">🚃</span>
+                <span>JR相模線「上溝駅」より徒歩約30分 / 車約10分</span>
+              </li>
+              <li>
+                <span class="access-icon" aria-hidden="true">🅿️</span>
+                <span>近隣に駐車場あり（詳細はお電話にてご確認ください）</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Google Maps -->
+          <div class="map-wrap reveal" aria-label="地図">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3243.7678345879013!2d139.37043807677527!3d35.57851247259261!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6019259b406d97c7%3A0xcf9b85a671a3b74!2z5bGF3omL6i-U7bKh5LiD!5e0!3m2!1sja!2sjp!4v1712717600000!5m2!1sja!2sjp"
+              title="焼き鳥鳥七の地図"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen>
+            </iframe>
+          </div>
+
+          <!-- 予約CTA -->
+          <div class="info-cta reveal">
+            <p>ご予約はホットペッパーグルメから。お席のご確認・日時指定が簡単です。</p>
+            <a href="https://www.hotpepper.jp/strJ001003883/" target="_blank" rel="noopener" class="btn-primary" style="display:inline-flex;">
+              空席を確認・予約する
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== INSTAGRAM ===================== -->
+    <section id="instagram" aria-labelledby="insta-title">
+      <div class="container">
+        <div class="insta-header">
+          <span class="section-label reveal">Instagram</span>
+          <h2 class="section-title reveal" id="insta-title" style="transition-delay:0.1s">
+            最新情報はInstagramで
+          </h2>
+          <div class="divider"></div>
+          <p class="reveal" style="font-size:0.88rem;color:var(--color-muted);margin-bottom:2rem;transition-delay:0.2s">
+            新串のご案内・お休みのお知らせ・日々の焼き鳥をInstagramに投稿しています。
+          </p>
+        </div>
+        <div class="reveal" style="transition-delay:0.3s">
+          <a href="https://www.instagram.com/torishichi_yakitori10/" target="_blank" rel="noopener" class="insta-link" aria-label="Instagramを開く">
+            <svg class="insta-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+            @torishichi_yakitori10
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer id="footer" aria-label="フッター">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            焼き鳥 鳥七
+            <span>YAKITORI TORISHICHI</span>
+          </div>
+          <p>
+            相模原市中央区・陽光台の焼き鳥居酒屋。<br />
+            30種の串と厳選地酒で、<br />
+            あなたの夜を豊かにします。
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>営業情報</h4>
+          <ul>
+            <li>月〜水・金〜日：17:00〜深夜0:00</li>
+            <li>木曜日：定休日</li>
+            <li>
+              <a href="tel:0428652754">TEL: 042-865-2754</a>
+            </li>
+            <li>〒252-0226 相模原市中央区陽光台2-15-10</li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>ご予約・SNS</h4>
+          <ul>
+            <li>
+              <a href="https://www.hotpepper.jp/strJ001003883/" target="_blank" rel="noopener">
+                ホットペッパーグルメ
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/torishichi_yakitori10/" target="_blank" rel="noopener">
+                Instagram
+              </a>
+            </li>
+          </ul>
+          <a href="https://www.hotpepper.jp/strJ001003883/" target="_blank" rel="noopener" class="footer-reserve">
+            Web予約はこちら
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <small>© 2024 居酒屋 焼き鳥鳥七 All Rights Reserved.</small>
+        <ul class="footer-nav-links" aria-label="フッターナビゲーション">
+          <li><a href="#hero">トップ</a></li>
+          <li><a href="#concept">こだわり</a></li>
+          <li><a href="#menu">メニュー</a></li>
+          <li><a href="#info">アクセス</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SP 固定予約ボタン -->
+  <a href="https://www.hotpepper.jp/strJ001003883/" target="_blank" rel="noopener"
+     class="float-reserve sp-only" aria-label="席を予約する（ホットペッパー）">
+    席を予約する
+  </a>
+
+  <!-- ===================== JAVASCRIPT ===================== -->
+  <script>
+    'use strict';
+
+    /* --- Header scroll behavior --- */
+    const header = document.getElementById('header');
+    const onScroll = () => {
+      header.classList.toggle('scrolled', window.scrollY > 50);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    /* --- SP menu drawer --- */
+    const menuBtn  = document.getElementById('menuBtn');
+    const spNav    = document.getElementById('spNav');
+    const spLinks  = spNav.querySelectorAll('.sp-nav-link, .btn-reserve');
+
+    menuBtn.addEventListener('click', () => {
+      const open = spNav.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', open);
+    });
+    spLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        spNav.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    /* --- Reveal on scroll --- */
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          revealObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    /* --- Menu tab filter --- */
+    const tabBtns  = document.querySelectorAll('.menu-tabs .tab-btn');
+    const menuItems = document.querySelectorAll('.menu-item');
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const cat = btn.dataset.cat;
+        tabBtns.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+
+        menuItems.forEach(item => {
+          const show = cat === 'all' || item.dataset.cat === cat;
+          item.style.display = show ? 'flex' : 'none';
+        });
+      });
+    });
+
+    /* --- Gallery carousel --- */
+    (function () {
+      const track  = document.getElementById('galleryTrack');
+      const dots   = document.getElementById('galleryDots');
+      const slides = track.querySelectorAll('.gallery-slide');
+      let   current = 0;
+      let   autoTimer;
+
+      const getVisible = () => window.innerWidth <= 640 ? 1 : window.innerWidth <= 900 ? 2 : 3;
+
+      const buildDots = () => {
+        dots.innerHTML = '';
+        const count = Math.ceil(slides.length / getVisible());
+        for (let i = 0; i < count; i++) {
+          const d = document.createElement('button');
+          d.className = 'gallery-dot' + (i === 0 ? ' active' : '');
+          d.setAttribute('aria-label', `スライド ${i + 1}`);
+          d.addEventListener('click', () => goTo(i));
+          dots.appendChild(d);
+        }
+      };
+
+      const update = () => {
+        const vis     = getVisible();
+        const maxPage = Math.ceil(slides.length / vis) - 1;
+        current = Math.min(current, maxPage);
+        const slideW  = slides[0].offsetWidth;
+        const gap     = 16;
+        track.style.transform = `translateX(-${current * (slideW + gap) * vis}px)`;
+
+        dots.querySelectorAll('.gallery-dot').forEach((d, i) => {
+          d.classList.toggle('active', i === current);
+        });
+      };
+
+      const goTo = n => {
+        const vis     = getVisible();
+        const maxPage = Math.ceil(slides.length / vis) - 1;
+        current = (n + maxPage + 1) % (maxPage + 1);
+        update();
+        resetAuto();
+      };
+
+      document.getElementById('galleryPrev').addEventListener('click', () => goTo(current - 1));
+      document.getElementById('galleryNext').addEventListener('click', () => goTo(current + 1));
+
+      const resetAuto = () => {
+        clearInterval(autoTimer);
+        autoTimer = setInterval(() => goTo(current + 1), 3500);
+      };
+
+      /* Touch/swipe */
+      let touchX = 0;
+      track.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
+      track.addEventListener('touchend', e => {
+        const diff = touchX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 40) goTo(current + (diff > 0 ? 1 : -1));
+      });
+
+      buildDots();
+      update();
+      resetAuto();
+
+      window.addEventListener('resize', () => { buildDots(); update(); });
+
+      /* Gallery filter tabs */
+      const filterBtns = document.querySelectorAll('.gallery-filter .tab-btn');
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => {
+            b.classList.remove('active');
+            b.setAttribute('aria-selected', 'false');
+          });
+          btn.classList.add('active');
+          btn.setAttribute('aria-selected', 'true');
+
+          const f = btn.dataset.filter;
+          slides.forEach(s => {
+            s.style.display = (f === 'all' || s.dataset.filter === f) ? 'block' : 'none';
+          });
+          current = 0;
+          update();
+        });
+      });
+    })();
+
+    /* --- Smooth scroll for all anchor links --- */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (!target) return;
+        e.preventDefault();
+        const offset = parseInt(getComputedStyle(document.documentElement)
+          .getPropertyValue('--header-h')) || 64;
+        window.scrollTo({ top: target.offsetTop - offset, behavior: 'smooth' });
+      });
+    });
+  </script>
+
+</body>
+</html>
