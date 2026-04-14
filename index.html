@@ -494,30 +494,103 @@
       gap: 1px;
       background: var(--color-border);
     }
+    /* ===== MENU CATEGORY LAYOUT ===== */
     .menu-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      margin-top: 3rem;
+    }
+
+    .menu-cat-featured {
+      position: relative;
+      height: 300px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .menu-cat-featured .cat-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s;
+    }
+    .menu-cat-featured:hover .cat-bg { transform: scale(1.04); }
+    .menu-cat-featured-inner {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      background: rgba(13,8,2,0.58);
+      padding: 2rem 4rem;
+    }
+
+    .menu-cat {
       display: grid;
-      grid-template-columns: 3fr 2fr;
-      gap: 0;
-      align-items: stretch;
-      min-height: 500px;
+      grid-template-columns: 5fr 6fr;
+      min-height: 300px;
     }
-    .menu-left {
-      padding-right: 2rem;
+    .menu-cat.rev {
+      grid-template-columns: 6fr 5fr;
     }
-    .menu-side-photo-wrap {
-      position: sticky;
-      top: 80px;
-      height: calc(100vh - 160px);
-      max-height: 700px;
-      min-height: 400px;
+    .menu-cat.rev .menu-cat-img { order: 2; }
+    .menu-cat.rev .menu-cat-body { order: 1; }
+
+    .menu-cat-img {
+      overflow: hidden;
     }
-    .menu-side-photo {
+    .menu-cat-img img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
-      border-radius: 4px;
+      transition: transform 0.5s;
     }
+    .menu-cat:hover .menu-cat-img img { transform: scale(1.04); }
+
+    .menu-cat-body {
+      background: var(--color-surface);
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1.2rem;
+    }
+    .cat-en {
+      font-size: 0.68rem;
+      letter-spacing: 0.25em;
+      color: var(--color-gold);
+      text-transform: uppercase;
+    }
+    .cat-ja {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      color: var(--color-text);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      margin: 0;
+    }
+    .cat-items {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.9rem 1.5rem;
+    }
+    .cat-item-name {
+      font-size: 0.88rem;
+      color: var(--color-text);
+      font-weight: 500;
+      margin: 0;
+    }
+    .cat-item-desc {
+      font-size: 0.72rem;
+      color: var(--color-muted);
+      line-height: 1.5;
+      margin: 0.15rem 0 0;
+    }
+
+    /* (removed: menu-side-photo) */
 
     .menu-item {
       background: var(--color-surface);
@@ -1095,186 +1168,88 @@
         </div>
 
         <div class="menu-layout">
-          <div class="menu-left">
-            <div class="menu-tabs reveal" role="tablist" aria-label="メニューカテゴリ">
-              <button class="tab-btn active" data-cat="tori" role="tab" aria-selected="true">鶏もの</button>
-              <button class="tab-btn" data-cat="buta" role="tab" aria-selected="false">豚・牛もの</button>
-              <button class="tab-btn" data-cat="yasai" role="tab" aria-selected="false">野菜・変わり串</button>
-              <button class="tab-btn" data-cat="omakase" role="tab" aria-selected="false">お任せ</button>
+
+          <!-- ① お任せ Featured Banner -->
+          <div class="menu-cat-featured reveal">
+            <img src="assets/menu-photo.jpg" alt="お任せセット" class="cat-bg" loading="lazy" />
+            <div class="menu-cat-featured-inner">
+              <p class="cat-en">Omakase</p>
+              <h3 class="cat-ja" style="color:#fff;margin:0.5rem 0 0.8rem;">お任せセット</h3>
+              <p style="font-size:0.82rem;color:rgba(255,255,255,0.8);max-width:340px;margin:0 auto;line-height:1.7;">
+                バランスよく盛り合わせ。初めての方にもおすすめ。
+              </p>
             </div>
+          </div>
 
-            <div class="menu-grid reveal" id="menuGrid" style="transition-delay:0.1s">
-
-              <!-- お任せ（omakase） -->
-              <div class="menu-item" data-cat="omakase">
-                <div class="menu-icon" aria-hidden="true">🔥</div>
-                <div>
-                  <span class="menu-name">お任せセット</span>
-                  <span class="menu-desc">バランスよく盛り合わせ。初めての方にもおすすめ。</span>
-                </div>
+          <!-- ② 鶏もの（画像左・テキスト右） -->
+          <div class="menu-cat reveal">
+            <div class="menu-cat-img">
+              <img src="assets/food-04.jpg" alt="鶏もの" loading="lazy" />
+            </div>
+            <div class="menu-cat-body">
+              <p class="cat-en">Chicken</p>
+              <h3 class="cat-ja">鶏もの</h3>
+              <div class="cat-items">
+                <div><p class="cat-item-name">もも</p><p class="cat-item-desc">ジューシーな鶏もも肉。塩・タレどちらでも。</p></div>
+                <div><p class="cat-item-name">むね</p><p class="cat-item-desc">さっぱりとした鶏むね。柚子塩がよく合います。</p></div>
+                <div><p class="cat-item-name">ねぎま</p><p class="cat-item-desc">鶏もも×長ねぎ。定番中の定番。</p></div>
+                <div><p class="cat-item-name">つくね</p><p class="cat-item-desc">自家製つくね。タレと半熟卵で召し上がれ。</p></div>
+                <div><p class="cat-item-name">皮</p><p class="cat-item-desc">カリカリに焼いた鶏皮。塩でどうぞ。</p></div>
+                <div><p class="cat-item-name">砂肝</p><p class="cat-item-desc">コリコリとした食感。塩・わさびも。</p></div>
+                <div><p class="cat-item-name">レバー</p><p class="cat-item-desc">新鮮なレバー。半生に焼き上げます。</p></div>
+                <div><p class="cat-item-name">ハツ</p><p class="cat-item-desc">心臓の旨みが凝縮。シンプルに塩で。</p></div>
+                <div><p class="cat-item-name">せせり</p><p class="cat-item-desc">希少な首まわりの肉。旨みと歯応え。</p></div>
+                <div><p class="cat-item-name">手羽先</p><p class="cat-item-desc">こんがり焼いた手羽先。ビールが進む。</p></div>
               </div>
-
-          <!-- 鶏もの（tori） -->
-          <div class="menu-item" data-cat="tori">
-            <div class="menu-icon" aria-hidden="true">🍗</div>
-            <div>
-              <span class="menu-name">もも</span>
-              <span class="menu-desc">ジューシーな鶏もも肉。塩・タレどちらでも。</span>
-            </div>
-          </div>
-          <div class="menu-item" data-cat="tori">
-            <div class="menu-icon" aria-hidden="true">🍗</div>
-            <div>
-              <span class="menu-name">むね</span>
-              <span class="menu-desc">さっぱりとした鶏むね。柚子塩がよく合います。</span>
-            </div>
-          </div>
-          <div class="menu-item" data-cat="tori">
-            <div class="menu-icon" aria-hidden="true">🍗</div>
-            <div>
-              <span class="menu-name">ねぎま</span>
-              <span class="menu-desc">鶏もも×長ねぎのコンビネーション。定番中の定番。</span>
-            </div>
-          </div>
-          <div class="menu-item" data-cat="tori">
-            <div class="menu-icon" aria-hidden="true">🍗</div>
-            <div>
-              <span class="menu-name">つくね</span>
-              <span class="menu-desc">自家製のつくね。タレと半熟卵で召し上がれ。</span>
-            </div>
-          </div>
-          <div class="menu-item" data-cat="tori">
-            <div class="menu-icon" aria-hidden="true">🍗</div>
-            <div>
-              <span class="menu-name">皮</span>
-              <span class="menu-desc">カリカリに焼いた鶏皮。塩でどうぞ。</span>
-            </div>
-          </div>
-          <div class="menu-item" data-cat="tori">
-            <div class="menu-icon" aria-hidden="true">🍗</div>
-            <div>
-              <span class="menu-name">砂肝</span>
-              <span class="menu-desc">コリコリとした食感。塩・わさびもおすすめ。</span>
-            </div>
-          </div>
-          <div class="menu-item" data-cat="tori">
-            <div class="menu-icon" aria-hidden="true">🍗</div>
-            <div>
-              <span class="menu-name">レバー</span>
-              <span class="menu-desc">新鮮なレバー。半生に焼き上げます。</span>
-            </div>
-          </div>
-          <div class="menu-item" data-cat="tori">
-            <div class="menu-icon" aria-hidden="true">🍗</div>
-            <div>
-              <span class="menu-name">ハツ</span>
-              <span class="menu-desc">心臓の旨みが凝縮。シンプルに塩で。</span>
-            </div>
-          </div>
-          <div class="menu-item" data-cat="tori">
-            <div class="menu-icon" aria-hidden="true">🍗</div>
-            <div>
-              <span class="menu-name">せせり</span>
-              <span class="menu-desc">希少な首まわりの肉。歯応えと旨みの両立。</span>
-            </div>
-          </div>
-          <div class="menu-item" data-cat="tori">
-            <div class="menu-icon" aria-hidden="true">🍗</div>
-            <div>
-              <span class="menu-name">手羽先</span>
-              <span class="menu-desc">こんがり焼いた手羽先。ビールが進む一品。</span>
             </div>
           </div>
 
-          <!-- 豚・牛もの（buta） -->
-          <div class="menu-item" data-cat="buta">
-            <div class="menu-icon" aria-hidden="true">🥩</div>
-            <div>
-              <span class="menu-name">豚バラ</span>
-              <span class="menu-desc">脂の甘みが絶品。タレとの相性抜群。</span>
+          <!-- ③ 豚・牛もの（テキスト左・画像右） -->
+          <div class="menu-cat rev reveal">
+            <div class="menu-cat-img">
+              <img src="assets/food-06.jpg" alt="豚・牛もの" loading="lazy" />
             </div>
-          </div>
-          <div class="menu-item" data-cat="buta">
-            <div class="menu-icon" aria-hidden="true">🥩</div>
-            <div>
-              <span class="menu-name">豚ねぎ巻き</span>
-              <span class="menu-desc">豚バラで長ねぎを巻いた人気串。</span>
-            </div>
-          </div>
-          <div class="menu-item" data-cat="buta">
-            <div class="menu-icon" aria-hidden="true">🥩</div>
-            <div>
-              <span class="menu-name">牛カルビ</span>
-              <span class="menu-desc">国産牛カルビ。旨みたっぷりのタレで。</span>
-            </div>
-          </div>
-          <div class="menu-item" data-cat="buta">
-            <div class="menu-icon" aria-hidden="true">🥩</div>
-            <div>
-              <span class="menu-name">豚もつ</span>
-              <span class="menu-desc">味噌だれで仕上げた濃厚もつ串。</span>
+            <div class="menu-cat-body">
+              <p class="cat-en">Pork &amp; Beef</p>
+              <h3 class="cat-ja">豚・牛もの</h3>
+              <div class="cat-items">
+                <div><p class="cat-item-name">豚バラ</p><p class="cat-item-desc">脂の甘みが絶品。タレとの相性抜群。</p></div>
+                <div><p class="cat-item-name">豚ねぎ巻き</p><p class="cat-item-desc">豚バラで長ねぎを巻いた人気串。</p></div>
+                <div><p class="cat-item-name">牛カルビ</p><p class="cat-item-desc">国産牛カルビ。旨みたっぷりのタレで。</p></div>
+                <div><p class="cat-item-name">豚もつ</p><p class="cat-item-desc">味噌だれで仕上げた濃厚もつ串。</p></div>
+              </div>
             </div>
           </div>
 
-          <!-- 野菜・変わり串（yasai） -->
-          <div class="menu-item" data-cat="yasai">
-            <div class="menu-icon" aria-hidden="true">🌿</div>
-            <div>
-              <span class="menu-name">ししとう</span>
-              <span class="menu-desc">シンプルな塩焼き。ピリッとした一本。</span>
+          <!-- ④ 野菜・変わり串（画像左・テキスト右） -->
+          <div class="menu-cat reveal">
+            <div class="menu-cat-img">
+              <img src="assets/food-01.jpg" alt="野菜・変わり串" loading="lazy" />
+            </div>
+            <div class="menu-cat-body">
+              <p class="cat-en">Veggie &amp; Unique</p>
+              <h3 class="cat-ja">野菜・変わり串</h3>
+              <div class="cat-items">
+                <div><p class="cat-item-name">ししとう</p><p class="cat-item-desc">シンプルな塩焼き。ピリッとした一本。</p></div>
+                <div><p class="cat-item-name">えのき巻き</p><p class="cat-item-desc">豚バラでえのきを巻いた軽やかな一品。</p></div>
+                <div><p class="cat-item-name">玉ねぎ</p><p class="cat-item-desc">甘みが引き出された焼き玉ねぎ。</p></div>
+                <div><p class="cat-item-name">とうもろこし</p><p class="cat-item-desc">季節のとうもろこし。醤油バターで。</p></div>
+                <div><p class="cat-item-name">チーズ豚巻き</p><p class="cat-item-desc">とろけるチーズを豚バラで包んだ一串。</p></div>
+                <div><p class="cat-item-name">ベーコンアスパラ</p><p class="cat-item-desc">アスパラのシャキシャキとベーコンの旨み。</p></div>
+              </div>
             </div>
           </div>
-          <div class="menu-item" data-cat="yasai">
-            <div class="menu-icon" aria-hidden="true">🌿</div>
-            <div>
-              <span class="menu-name">えのき巻き</span>
-              <span class="menu-desc">豚バラでえのきを巻いた軽やかな一品。</span>
-            </div>
-          </div>
-          <div class="menu-item" data-cat="yasai">
-            <div class="menu-icon" aria-hidden="true">🧅</div>
-            <div>
-              <span class="menu-name">玉ねぎ</span>
-              <span class="menu-desc">甘みが引き出された焼き玉ねぎ。</span>
-            </div>
-          </div>
-          <div class="menu-item" data-cat="yasai">
-            <div class="menu-icon" aria-hidden="true">🌽</div>
-            <div>
-              <span class="menu-name">とうもろこし</span>
-              <span class="menu-desc">季節のとうもろこし。醤油バターで。</span>
-            </div>
-          </div>
-          <div class="menu-item" data-cat="yasai">
-            <div class="menu-icon" aria-hidden="true">🧀</div>
-            <div>
-              <span class="menu-name">チーズ豚巻き</span>
-              <span class="menu-desc">とろけるチーズを豚バラで包んだ一串。</span>
-            </div>
-          </div>
-          <div class="menu-item" data-cat="yasai">
-            <div class="menu-icon" aria-hidden="true">🥓</div>
-            <div>
-              <span class="menu-name">ベーコンアスパラ</span>
-              <span class="menu-desc">アスパラのシャキシャキとベーコンの旨みが合う。</span>
-            </div>
-          </div>
-        </div>
 
-            <p class="menu-note reveal">
-              ※ 季節のメニュー・一部品切れの場合がございます。お気軽にお声がけください。
-            </p>
-            <div class="menu-cta reveal" style="transition-delay:0.1s">
-              <a href="https://www.hotpepper.jp/strJ001003883/" target="_blank" rel="noopener" class="btn-primary">
-                席を予約してから来る
-              </a>
-            </div>
-          </div><!-- /.menu-left -->
-
-          <div class="menu-side-photo-wrap">
-            <img src="assets/menu-photo.jpg" alt="鳥七の串盛り合わせ" class="menu-side-photo" loading="lazy" />
-          </div>
         </div><!-- /.menu-layout -->
+
+        <p class="menu-note reveal">
+          ※ 季節のメニュー・一部品切れの場合がございます。お気軽にお声がけください。
+        </p>
+        <div class="menu-cta reveal" style="transition-delay:0.1s">
+          <a href="https://www.hotpepper.jp/strJ001003883/" target="_blank" rel="noopener" class="btn-primary">
+            席を予約してから来る
+          </a>
+        </div>
       </div>
     </section>
 
@@ -1564,33 +1539,6 @@
       });
     }, { threshold: 0.12 });
     revealEls.forEach(el => revealObserver.observe(el));
-
-    /* --- Menu tab filter --- */
-    const tabBtns  = document.querySelectorAll('.menu-tabs .tab-btn');
-    const menuItems = document.querySelectorAll('.menu-item');
-
-    function applyFilter(cat) {
-      menuItems.forEach(item => {
-        item.style.display = item.dataset.cat === cat ? 'flex' : 'none';
-      });
-    }
-
-    // 初期表示：最初のタブ（鶏もの）を適用
-    applyFilter('tori');
-
-    tabBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const cat = btn.dataset.cat;
-        tabBtns.forEach(b => {
-          b.classList.remove('active');
-          b.setAttribute('aria-selected', 'false');
-        });
-        btn.classList.add('active');
-        btn.setAttribute('aria-selected', 'true');
-        applyFilter(cat);
-      });
-    });
-
 
     /* --- Smooth scroll for all anchor links --- */
     document.querySelectorAll('a[href^="#"]').forEach(a => {
