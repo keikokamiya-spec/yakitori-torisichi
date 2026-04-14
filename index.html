@@ -494,27 +494,21 @@
       gap: 1px;
       background: var(--color-border);
     }
-    .menu-item--photo {
-      flex-direction: row;
-      align-items: stretch;
-      padding: 0;
-      overflow: hidden;
-      min-height: 90px;
+    .menu-layout {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 2rem;
+      align-items: start;
     }
-    .menu-item--photo .menu-item-body {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      padding: 0.8rem 1.2rem;
-      flex: 1;
-      min-width: 0;
-    }
-    .menu-item-photo {
-      width: 160px;
-      height: 90px;
+    .menu-side-photo {
+      width: 100%;
+      height: 100%;
+      min-height: 400px;
       object-fit: cover;
       display: block;
-      flex-shrink: 0;
+      border-radius: 2px;
+      position: sticky;
+      top: 100px;
     }
 
     .menu-item {
@@ -1092,26 +1086,25 @@
           </p>
         </div>
 
-        <div class="menu-tabs reveal" role="tablist" aria-label="メニューカテゴリ">
-          <button class="tab-btn active" data-cat="tori" role="tab" aria-selected="true">鶏もの</button>
-          <button class="tab-btn" data-cat="buta" role="tab" aria-selected="false">豚・牛もの</button>
-          <button class="tab-btn" data-cat="yasai" role="tab" aria-selected="false">野菜・変わり串</button>
-          <button class="tab-btn" data-cat="omakase" role="tab" aria-selected="false">お任せ</button>
-        </div>
-
-        <div class="menu-grid reveal" id="menuGrid" style="transition-delay:0.1s">
-
-          <!-- お任せ（omakase） -->
-          <div class="menu-item menu-item--photo" data-cat="omakase">
-            <div class="menu-item-body">
-              <div class="menu-icon" aria-hidden="true">🔥</div>
-              <div>
-                <span class="menu-name">お任せセット</span>
-                <span class="menu-desc">バランスよく盛り合わせ。初めての方にもおすすめ。</span>
-              </div>
+        <div class="menu-layout">
+          <div class="menu-left">
+            <div class="menu-tabs reveal" role="tablist" aria-label="メニューカテゴリ">
+              <button class="tab-btn active" data-cat="tori" role="tab" aria-selected="true">鶏もの</button>
+              <button class="tab-btn" data-cat="buta" role="tab" aria-selected="false">豚・牛もの</button>
+              <button class="tab-btn" data-cat="yasai" role="tab" aria-selected="false">野菜・変わり串</button>
+              <button class="tab-btn" data-cat="omakase" role="tab" aria-selected="false">お任せ</button>
             </div>
-            <img src="assets/menu-photo.jpg" alt="鳥七の串盛り合わせ" class="menu-item-photo" loading="lazy" />
-          </div>
+
+            <div class="menu-grid reveal" id="menuGrid" style="transition-delay:0.1s">
+
+              <!-- お任せ（omakase） -->
+              <div class="menu-item" data-cat="omakase">
+                <div class="menu-icon" aria-hidden="true">🔥</div>
+                <div>
+                  <span class="menu-name">お任せセット</span>
+                  <span class="menu-desc">バランスよく盛り合わせ。初めての方にもおすすめ。</span>
+                </div>
+              </div>
 
           <!-- 鶏もの（tori） -->
           <div class="menu-item" data-cat="tori">
@@ -1260,14 +1253,18 @@
           </div>
         </div>
 
-        <p class="menu-note reveal">
-          ※ 季節のメニュー・一部品切れの場合がございます。お気軽にお声がけください。
-        </p>
-        <div class="menu-cta reveal" style="transition-delay:0.1s">
-          <a href="https://www.hotpepper.jp/strJ001003883/" target="_blank" rel="noopener" class="btn-primary">
-            席を予約してから来る
-          </a>
-        </div>
+            <p class="menu-note reveal">
+              ※ 季節のメニュー・一部品切れの場合がございます。お気軽にお声がけください。
+            </p>
+            <div class="menu-cta reveal" style="transition-delay:0.1s">
+              <a href="https://www.hotpepper.jp/strJ001003883/" target="_blank" rel="noopener" class="btn-primary">
+                席を予約してから来る
+              </a>
+            </div>
+          </div><!-- /.menu-left -->
+
+          <img src="assets/menu-photo.jpg" alt="鳥七の串盛り合わせ" class="menu-side-photo reveal" loading="lazy" />
+        </div><!-- /.menu-layout -->
       </div>
     </section>
 
