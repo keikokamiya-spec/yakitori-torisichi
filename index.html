@@ -622,126 +622,6 @@
     /* ============================================================
        GALLERY
     ============================================================ */
-    #gallery {
-      padding: 7rem 0;
-      background: var(--color-bg);
-    }
-
-    .gallery-header {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-    .gallery-header .divider { margin: 1.2rem auto 1.5rem; }
-
-    .gallery-filter {
-      display: flex;
-      justify-content: center;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      margin-bottom: 2rem;
-    }
-
-    .gallery-track-wrap {
-      overflow: hidden;
-      position: relative;
-    }
-
-    .gallery-track {
-      display: flex;
-      gap: 1rem;
-      transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      will-change: transform;
-    }
-
-    .gallery-slide {
-      flex-shrink: 0;
-      width: calc(33.333% - 0.67rem);
-      border-radius: 2px;
-      overflow: hidden;
-      position: relative;
-      aspect-ratio: 4/3;
-    }
-
-    .gallery-img-placeholder {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 0.5rem;
-      background: var(--color-surface);
-      border: 1px dashed var(--color-border);
-      transition: background 0.3s;
-    }
-    .gallery-img-placeholder:hover { background: var(--color-surface2); }
-    .gallery-img-placeholder .ph-icon { font-size: 2rem; opacity: 0.5; }
-    .gallery-img-placeholder .ph-label {
-      font-size: 0.72rem;
-      color: var(--color-muted);
-      letter-spacing: 0.1em;
-    }
-
-    /* Real images (once assets exist) */
-    .gallery-slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s;
-    }
-    .gallery-slide:hover img { transform: scale(1.04); }
-
-    .gallery-slide .slide-tag {
-      position: absolute;
-      bottom: 0.6rem;
-      left: 0.6rem;
-      padding: 0.2rem 0.6rem;
-      background: rgba(13,8,2,0.82);
-      font-size: 0.65rem;
-      letter-spacing: 0.12em;
-      color: var(--color-gold);
-      border-radius: 1px;
-    }
-
-    .gallery-controls {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-    .gallery-btn {
-      width: 40px;
-      height: 40px;
-      border: 1px solid var(--color-border);
-      background: transparent;
-      color: var(--color-gold);
-      font-size: 1rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      transition: background 0.25s, border-color 0.25s;
-    }
-    .gallery-btn:hover {
-      background: rgba(191,79,6,0.15);
-      border-color: var(--color-gold-dim);
-    }
-
-    .gallery-dots {
-      display: flex;
-      gap: 0.4rem;
-    }
-    .gallery-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--color-border);
-      cursor: pointer;
-      transition: background 0.25s;
-    }
-    .gallery-dot.active { background: var(--color-gold); }
 
     /* ============================================================
        STORE INFO
@@ -1029,7 +909,6 @@
       .concept-inner { grid-template-columns: 1fr; gap: 2.5rem; }
       .drink-grid { grid-template-columns: repeat(2, 1fr); }
       .menu-grid { grid-template-columns: repeat(2, 1fr); }
-      .gallery-slide { width: calc(50% - 0.5rem); }
       .info-grid { grid-template-columns: 1fr; }
       .footer-inner { grid-template-columns: 1fr 1fr; }
     }
@@ -1049,9 +928,7 @@
       .menu-grid { grid-template-columns: 1fr; }
       .drink-grid { grid-template-columns: 1fr 1fr; gap: 0.8rem; }
 
-      .gallery-slide { width: calc(85% - 0.5rem); }
-
-      .info-grid { grid-template-columns: 1fr; }
+.info-grid { grid-template-columns: 1fr; }
 
       .footer-inner { grid-template-columns: 1fr; gap: 1.5rem; }
       .footer-bottom { flex-direction: column; align-items: flex-start; }
@@ -1078,7 +955,6 @@
           <li><a href="#concept">こだわり</a></li>
           <li><a href="#menu">メニュー</a></li>
           <li><a href="#drink">ドリンク</a></li>
-          <li><a href="#gallery">店内</a></li>
           <li><a href="#info">アクセス</a></li>
           <li>
             <a href="https://www.hotpepper.jp/strJ001003883/" target="_blank" rel="noopener" class="btn-reserve">
@@ -1100,7 +976,6 @@
       <li><a href="#concept" class="sp-nav-link">こだわり</a></li>
       <li><a href="#menu" class="sp-nav-link">メニュー</a></li>
       <li><a href="#drink" class="sp-nav-link">ドリンク</a></li>
-      <li><a href="#gallery" class="sp-nav-link">店内</a></li>
       <li><a href="#info" class="sp-nav-link">アクセス</a></li>
     </ul>
     <a href="https://www.hotpepper.jp/strJ001003883/" target="_blank" rel="noopener" class="btn-reserve">
@@ -1433,111 +1308,7 @@
       </div>
     </section>
 
-    <!-- ===================== GALLERY ===================== -->
-    <section id="gallery" aria-labelledby="gallery-title">
-      <div class="container">
-        <div class="gallery-header">
-          <span class="section-label reveal">Gallery</span>
-          <h2 class="section-title reveal" id="gallery-title" style="transition-delay:0.1s">
-            店内・料理の表情
-          </h2>
-          <div class="divider"></div>
-        </div>
 
-        <div class="gallery-filter reveal" role="tablist" aria-label="ギャラリーフィルター">
-          <button class="tab-btn active" data-filter="all" role="tab">すべて</button>
-          <button class="tab-btn" data-filter="food" role="tab">料理</button>
-          <button class="tab-btn" data-filter="interior" role="tab">店内</button>
-          <button class="tab-btn" data-filter="atmosphere" role="tab">雰囲気</button>
-        </div>
-
-        <div class="gallery-track-wrap reveal" style="transition-delay:0.1s">
-          <div class="gallery-track" id="galleryTrack" aria-label="ギャラリー写真">
-
-            <div class="gallery-slide" data-filter="food">
-              <img src="assets/food-01.jpg" alt="鳥七のしそ・梅巻き串" loading="lazy" />
-              <span class="slide-tag">料理</span>
-            </div>
-
-            <div class="gallery-slide" data-filter="food">
-              <img src="assets/food-02.jpg" alt="鳥七の豚バラ串" loading="lazy" />
-              <span class="slide-tag">料理</span>
-            </div>
-
-            <div class="gallery-slide" data-filter="food">
-              <img src="assets/food-03.jpg" alt="鳥七の手羽先" loading="lazy" />
-              <span class="slide-tag">料理</span>
-            </div>
-
-            <div class="gallery-slide" data-filter="food">
-              <img src="assets/food-04.jpg" alt="鳥七の串盛り合わせ" loading="lazy" />
-              <span class="slide-tag">料理</span>
-            </div>
-
-            <div class="gallery-slide" data-filter="food">
-              <img src="assets/food-05.jpg" alt="鳥七のトマトチーズご飯" loading="lazy" />
-              <span class="slide-tag">料理</span>
-            </div>
-
-            <div class="gallery-slide" data-filter="food">
-              <img src="assets/food-06.jpg" alt="鳥七のつくねと鶏むね串" loading="lazy" />
-              <span class="slide-tag">料理</span>
-            </div>
-
-            <div class="gallery-slide" data-filter="food">
-              <img src="assets/food-07.jpg" alt="鳥七の串盛り合わせ（レバー・砂肝・ねぎま等）" loading="lazy" />
-              <span class="slide-tag">料理</span>
-            </div>
-
-            <div class="gallery-slide" data-filter="food">
-              <img src="assets/food-08.jpg" alt="鳥七の豚バラ串タレ" loading="lazy" />
-              <span class="slide-tag">料理</span>
-            </div>
-
-            <div class="gallery-slide" data-filter="atmosphere">
-              <img src="assets/gallery-01.jpg" alt="鳥七の外観・提灯と看板" loading="lazy" />
-              <span class="slide-tag">雰囲気</span>
-            </div>
-
-            <div class="gallery-slide" data-filter="atmosphere">
-              <img src="assets/gallery-02.jpg" alt="鳥七の夜の外観" loading="lazy" />
-              <span class="slide-tag">雰囲気</span>
-            </div>
-
-            <div class="gallery-slide" data-filter="interior">
-              <img src="assets/gallery-03.jpg" alt="鳥七の店内・カウンター席" loading="lazy" />
-              <span class="slide-tag">店内</span>
-            </div>
-
-            <div class="gallery-slide" data-filter="interior">
-              <img src="assets/gallery-04.jpg" alt="鳥七の店内・テーブル席" loading="lazy" />
-              <span class="slide-tag">店内</span>
-            </div>
-
-            <div class="gallery-slide" data-filter="interior">
-              <img src="assets/gallery-05.jpg" alt="鳥七の座敷席" loading="lazy" />
-              <span class="slide-tag">店内</span>
-            </div>
-
-          </div>
-        </div>
-
-        <div class="gallery-controls">
-          <button class="gallery-btn" id="galleryPrev" aria-label="前へ">&#8592;</button>
-          <div class="gallery-dots" id="galleryDots" aria-label="スライドインジケーター"></div>
-          <button class="gallery-btn" id="galleryNext" aria-label="次へ">&#8594;</button>
-        </div>
-
-        <p style="text-align:center;margin-top:1.5rem;font-size:0.78rem;color:var(--color-muted);">
-          最新の写真は
-          <a href="https://www.instagram.com/torishichi_yakitori10/" target="_blank" rel="noopener"
-             style="color:var(--color-gold);text-decoration:underline;text-underline-offset:3px;">
-            Instagram
-          </a>
-          をご覧ください。
-        </p>
-      </div>
-    </section>
 
     <!-- ===================== STORE INFO ===================== -->
     <section id="info" aria-labelledby="info-title">
@@ -1811,91 +1582,6 @@
       });
     });
 
-    /* --- Gallery carousel --- */
-    (function () {
-      const track  = document.getElementById('galleryTrack');
-      const dots   = document.getElementById('galleryDots');
-      const slides = track.querySelectorAll('.gallery-slide');
-      let   current = 0;
-      let   autoTimer;
-
-      const getVisible = () => window.innerWidth <= 640 ? 1 : window.innerWidth <= 900 ? 2 : 3;
-
-      const buildDots = () => {
-        dots.innerHTML = '';
-        const count = Math.ceil(slides.length / getVisible());
-        for (let i = 0; i < count; i++) {
-          const d = document.createElement('button');
-          d.className = 'gallery-dot' + (i === 0 ? ' active' : '');
-          d.setAttribute('aria-label', `スライド ${i + 1}`);
-          d.addEventListener('click', () => goTo(i));
-          dots.appendChild(d);
-        }
-      };
-
-      const update = () => {
-        const vis     = getVisible();
-        const maxPage = Math.ceil(slides.length / vis) - 1;
-        current = Math.min(current, maxPage);
-        const slideW  = slides[0].offsetWidth;
-        const gap     = 16;
-        track.style.transform = `translateX(-${current * (slideW + gap) * vis}px)`;
-
-        dots.querySelectorAll('.gallery-dot').forEach((d, i) => {
-          d.classList.toggle('active', i === current);
-        });
-      };
-
-      const goTo = n => {
-        const vis     = getVisible();
-        const maxPage = Math.ceil(slides.length / vis) - 1;
-        current = (n + maxPage + 1) % (maxPage + 1);
-        update();
-        resetAuto();
-      };
-
-      document.getElementById('galleryPrev').addEventListener('click', () => goTo(current - 1));
-      document.getElementById('galleryNext').addEventListener('click', () => goTo(current + 1));
-
-      const resetAuto = () => {
-        clearInterval(autoTimer);
-        autoTimer = setInterval(() => goTo(current + 1), 3500);
-      };
-
-      /* Touch/swipe */
-      let touchX = 0;
-      track.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
-      track.addEventListener('touchend', e => {
-        const diff = touchX - e.changedTouches[0].clientX;
-        if (Math.abs(diff) > 40) goTo(current + (diff > 0 ? 1 : -1));
-      });
-
-      buildDots();
-      update();
-      resetAuto();
-
-      window.addEventListener('resize', () => { buildDots(); update(); });
-
-      /* Gallery filter tabs */
-      const filterBtns = document.querySelectorAll('.gallery-filter .tab-btn');
-      filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          filterBtns.forEach(b => {
-            b.classList.remove('active');
-            b.setAttribute('aria-selected', 'false');
-          });
-          btn.classList.add('active');
-          btn.setAttribute('aria-selected', 'true');
-
-          const f = btn.dataset.filter;
-          slides.forEach(s => {
-            s.style.display = (f === 'all' || s.dataset.filter === f) ? 'block' : 'none';
-          });
-          current = 0;
-          update();
-        });
-      });
-    })();
 
     /* --- Smooth scroll for all anchor links --- */
     document.querySelectorAll('a[href^="#"]').forEach(a => {
