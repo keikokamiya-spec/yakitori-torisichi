@@ -125,6 +125,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 1rem;
     }
 
     .header-logo {
@@ -180,19 +181,34 @@
 
     .header-menu-btn {
       display: none;
+      align-items: center;
+      justify-content: center;
       flex-direction: column;
       gap: 5px;
       cursor: pointer;
-      padding: 4px;
-      background: none;
-      border: none;
+      width: 42px;
+      height: 42px;
+      flex: 0 0 auto;
+      padding: 0;
+      background: rgba(216,168,96,0.08);
+      border: 1px solid var(--color-border);
+      border-radius: 2px;
     }
     .header-menu-btn span {
       display: block;
-      width: 24px;
+      width: 20px;
       height: 2px;
       background: var(--color-gold);
       transition: 0.3s;
+    }
+    .header-menu-btn[aria-expanded="true"] span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    .header-menu-btn[aria-expanded="true"] span:nth-child(2) {
+      opacity: 0;
+    }
+    .header-menu-btn[aria-expanded="true"] span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
     }
 
     /* SP drawer */
@@ -994,13 +1010,134 @@
       .pc-only { display: none; }
       .sp-only { display: block; }
 
-      :root { --header-h: 56px; }
+      :root { --header-h: 64px; }
+
+      #header {
+        padding: 0 1rem;
+        background: rgba(13, 8, 2, 0.96);
+        box-shadow: 0 2px 18px rgba(0,0,0,0.45);
+        backdrop-filter: blur(10px);
+      }
+
+      .header-inner {
+        min-width: 0;
+      }
+
+      .header-logo {
+        min-width: 0;
+        font-size: 0.95rem;
+        line-height: 1.2;
+        letter-spacing: 0.04em;
+      }
+
+      .header-logo span {
+        font-size: 0.52rem;
+        letter-spacing: 0.12em;
+      }
 
       .header-nav { display: none; }
       .header-nav.desktop { display: none; }
       .header-menu-btn { display: flex; }
 
+      .sp-nav {
+        padding: 0.6rem 1rem 1rem;
+        border-bottom: 1px solid var(--color-border);
+        box-shadow: 0 18px 32px rgba(0,0,0,0.48);
+      }
+
+      .sp-nav a {
+        padding: 0.95rem 0.2rem;
+        font-size: 0.95rem;
+      }
+
+      .sp-nav .btn-reserve {
+        margin-top: 1rem;
+        padding: 0.85rem 1rem;
+      }
+
       .hero-title { line-height: 1.35; }
+
+      #menu {
+        padding-top: 4.5rem;
+      }
+
+      .menu-layout {
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .menu-cat-featured {
+        height: auto;
+        min-height: 220px;
+        border: 1px solid var(--color-border);
+      }
+
+      .menu-cat-featured-inner {
+        width: calc(100% - 2rem);
+        padding: 1.4rem 1.2rem;
+      }
+
+      .menu-cat {
+        display: block;
+        min-height: 0;
+        overflow: hidden;
+        border: 1px solid var(--color-border);
+        background: var(--color-surface);
+      }
+
+      .menu-cat.rev .menu-cat-img,
+      .menu-cat.rev .menu-cat-body {
+        order: initial;
+      }
+
+      .menu-cat-img {
+        aspect-ratio: 16 / 10;
+      }
+
+      .menu-cat-img img {
+        height: 100%;
+      }
+
+      .menu-cat-body {
+        padding: 1.35rem 1.15rem 1.2rem;
+        gap: 0.85rem;
+      }
+
+      .cat-en {
+        font-size: 0.62rem;
+        letter-spacing: 0.18em;
+      }
+
+      .cat-ja {
+        font-size: 1.35rem;
+        line-height: 1.35;
+      }
+
+      .cat-items {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .cat-items > div {
+        display: grid;
+        grid-template-columns: minmax(4.8rem, 6rem) 1fr;
+        gap: 0.8rem;
+        align-items: start;
+        padding: 0.7rem 0;
+        border-top: 1px solid rgba(216,168,96,0.12);
+      }
+
+      .cat-item-name {
+        font-size: 0.95rem;
+        line-height: 1.45;
+        white-space: nowrap;
+      }
+
+      .cat-item-desc {
+        font-size: 0.78rem;
+        line-height: 1.7;
+        margin: 0;
+      }
 
       .menu-grid { grid-template-columns: 1fr; }
       .drink-grid { grid-template-columns: 1fr 1fr; gap: 0.8rem; }
@@ -1028,7 +1165,7 @@
       </a>
 
       <nav aria-label="メインナビゲーション">
-        <ul class="header-nav pc-only" style="display:flex;">
+        <ul class="header-nav pc-only">
           <li><a href="#concept">こだわり</a></li>
           <li><a href="#menu">メニュー</a></li>
           <li><a href="#drink">ドリンク</a></li>
@@ -1088,14 +1225,6 @@
           地酒からホッピーまで、相模原の喉を<br class="pc-only" />潤し続けて15年が経ちました。
         </p>
 
-        <div class="hero-cta-group reveal" style="transition-delay:0.45s">
-          <a href="https://www.hotpepper.jp/strJ001003883/" target="_blank" rel="noopener" class="btn-primary">
-            席を予約する
-          </a>
-          <a href="#concept" class="btn-ghost">
-            鳥七のこだわり
-          </a>
-        </div>
       </div>
 
       <div class="hero-scroll" aria-hidden="true">scroll</div>
@@ -1191,37 +1320,19 @@
               <h3 class="cat-ja">鶏もの</h3>
               <div class="cat-items">
                 <div><p class="cat-item-name">もも</p><p class="cat-item-desc">ジューシーな鶏もも肉。塩・タレどちらでも。</p></div>
-                <div><p class="cat-item-name">むね</p><p class="cat-item-desc">さっぱりとした鶏むね。柚子塩がよく合います。</p></div>
                 <div><p class="cat-item-name">ねぎま</p><p class="cat-item-desc">鶏もも×長ねぎ。定番中の定番。</p></div>
-                <div><p class="cat-item-name">つくね</p><p class="cat-item-desc">自家製つくね。タレと半熟卵で召し上がれ。</p></div>
-                <div><p class="cat-item-name">皮</p><p class="cat-item-desc">カリカリに焼いた鶏皮。塩でどうぞ。</p></div>
-                <div><p class="cat-item-name">砂肝</p><p class="cat-item-desc">コリコリとした食感。塩・わさびも。</p></div>
-                <div><p class="cat-item-name">レバー</p><p class="cat-item-desc">新鮮なレバー。半生に焼き上げます。</p></div>
-                <div><p class="cat-item-name">ハツ</p><p class="cat-item-desc">心臓の旨みが凝縮。シンプルに塩で。</p></div>
+                <div><p class="cat-item-name">つくね</p><p class="cat-item-desc">自家製つくね。塩・タレのみ。</p></div>
+                <div><p class="cat-item-name">皮</p><p class="cat-item-desc">カリカリに焼いた鶏皮。塩・タレどちらでも。</p></div>
+                <div><p class="cat-item-name">砂肝</p><p class="cat-item-desc">コリコリとした食感。塩・タレどちらでも（わさびなし）。</p></div>
+                <div><p class="cat-item-name">レバー</p><p class="cat-item-desc">半生で焼き上げない。</p></div>
+                <div><p class="cat-item-name">ハツ</p><p class="cat-item-desc">心臓の旨みが凝縮。塩・タレどちらでも。</p></div>
                 <div><p class="cat-item-name">せせり</p><p class="cat-item-desc">希少な首まわりの肉。旨みと歯応え。</p></div>
                 <div><p class="cat-item-name">手羽先</p><p class="cat-item-desc">こんがり焼いた手羽先。ビールが進む。</p></div>
               </div>
             </div>
           </div>
 
-          <!-- ③ 豚・牛もの（テキスト左・画像右） -->
-          <div class="menu-cat rev reveal">
-            <div class="menu-cat-img">
-              <img src="assets/food-06.jpg" alt="豚・牛もの" loading="lazy" />
-            </div>
-            <div class="menu-cat-body">
-              <p class="cat-en">Pork &amp; Beef</p>
-              <h3 class="cat-ja">豚・牛もの</h3>
-              <div class="cat-items">
-                <div><p class="cat-item-name">豚バラ</p><p class="cat-item-desc">脂の甘みが絶品。タレとの相性抜群。</p></div>
-                <div><p class="cat-item-name">豚ねぎ巻き</p><p class="cat-item-desc">豚バラで長ねぎを巻いた人気串。</p></div>
-                <div><p class="cat-item-name">牛カルビ</p><p class="cat-item-desc">国産牛カルビ。旨みたっぷりのタレで。</p></div>
-                <div><p class="cat-item-name">豚もつ</p><p class="cat-item-desc">味噌だれで仕上げた濃厚もつ串。</p></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- ④ 野菜・変わり串（画像左・テキスト右） -->
+          <!-- ③ 野菜・変わり串（画像左・テキスト右） -->
           <div class="menu-cat reveal">
             <div class="menu-cat-img">
               <img src="assets/food-01.jpg" alt="野菜・変わり串" loading="lazy" />
@@ -1230,12 +1341,9 @@
               <p class="cat-en">Veggie &amp; Unique</p>
               <h3 class="cat-ja">野菜・変わり串</h3>
               <div class="cat-items">
-                <div><p class="cat-item-name">ししとう</p><p class="cat-item-desc">シンプルな塩焼き。ピリッとした一本。</p></div>
-                <div><p class="cat-item-name">えのき巻き</p><p class="cat-item-desc">豚バラでえのきを巻いた軽やかな一品。</p></div>
+                <div><p class="cat-item-name">ししとう</p><p class="cat-item-desc">香ばしく焼いた、ピリッとした一本。</p></div>
                 <div><p class="cat-item-name">玉ねぎ</p><p class="cat-item-desc">甘みが引き出された焼き玉ねぎ。</p></div>
-                <div><p class="cat-item-name">とうもろこし</p><p class="cat-item-desc">季節のとうもろこし。醤油バターで。</p></div>
-                <div><p class="cat-item-name">チーズ豚巻き</p><p class="cat-item-desc">とろけるチーズを豚バラで包んだ一串。</p></div>
-                <div><p class="cat-item-name">ベーコンアスパラ</p><p class="cat-item-desc">アスパラのシャキシャキとベーコンの旨み。</p></div>
+                <div><p class="cat-item-name">豚チーズ巻き</p><p class="cat-item-desc">とろけるチーズを豚バラで包んだ一串。</p></div>
               </div>
             </div>
           </div>
@@ -1388,7 +1496,7 @@
           <!-- Google Maps -->
           <div class="map-wrap reveal" aria-label="地図">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3243.7678345879013!2d139.37043807677527!3d35.57851247259261!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6019259b406d97c7%3A0xcf9b85a671a3b74!2z5bGF3omL6i-U7bKh5LiD!5e0!3m2!1sja!2sjp!4v1712717600000!5m2!1sja!2sjp"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3245.897364938278!2d139.375149!3d35.5562369!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018fd85517e32dd%3A0x546bbe69228b62a2!2z5bGF6YWS5bGLIOeEvOOBjemzpemzpeS4gw!5e0!3m2!1sja!2sjp!4v1779781823315!5m2!1sja!2sjp"
               title="焼き鳥鳥七の地図"
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
